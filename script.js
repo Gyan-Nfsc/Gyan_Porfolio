@@ -57,13 +57,17 @@ document.querySelectorAll('.nav-link').forEach(link => {
 
 // ─── Counter Animation ───────────────────────────────────────────────
 function animateCounter(el) {
-  const target = parseInt(el.dataset.target, 10);
+  const target = parseFloat(el.dataset.target);
+  const isDecimal = !Number.isInteger(target);
   const duration = 2000;
   const start = performance.now();
   const update = (now) => {
     const progress = Math.min((now - start) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    el.textContent = Math.floor(eased * target).toLocaleString();
+    const current = eased * target;
+    el.textContent = isDecimal
+      ? current.toFixed(1)
+      : Math.floor(current).toLocaleString();
     if (progress < 1) requestAnimationFrame(update);
   };
   requestAnimationFrame(update);
