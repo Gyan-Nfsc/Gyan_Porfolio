@@ -635,12 +635,11 @@ body {
 .info-chip strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--white); }
 .info-chip span { font-size: 0.74rem; color: var(--white-40); }
 
-/* ── Images column: 2×2 grid ── */
+/* ── Images column: single vertical stack ── */
 .about-images-col {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
-  align-content: start;
 }
 
 .about-img-wrap {
@@ -1601,8 +1600,7 @@ body {
   .gallery-grid { grid-template-columns: 1fr; }
   .gallery-wide { grid-column: span 1; }
   .about-grid { grid-template-columns: 1fr; }
-  .about-images-col { grid-template-columns: 1fr 1fr; }
-  .about-img-wrap img { height: 150px; }
+  .about-img-wrap img { height: 170px; }
   .about-glass-card { padding: 28px 24px; }
   .about-chips-row { justify-content: flex-start; }
 }
