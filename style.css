@@ -695,6 +695,30 @@ body {
   color: var(--white-40);
 }
 
+/* Clickable highlight link (Gold Medal etc.) */
+a.highlight-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.highlight-link:hover {
+  border-color: var(--orange);
+}
+
+.highlight-ext-arrow {
+  margin-left: auto;
+  font-size: 1rem;
+  color: var(--orange);
+  opacity: 0.45;
+  transition: opacity 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+a.highlight-link:hover .highlight-ext-arrow {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
 /* Credential chips — now on right side below images */
 .about-chips-row {
   display: flex;
