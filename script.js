@@ -132,23 +132,52 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ─── Contact Form ─────────────────────────────────────────────────────
+// ─── Contact Form — Formspree Integration ─────────────────────────────
 const form = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 
 if (form) {
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    // Show loading state
+    submitBtn.disabled = true;
     submitBtn.innerHTML = `<span>Sending...</span>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite">
         <circle cx="12" cy="12" r="10" stroke-opacity="0.3"/><path d="M12 2a10 10 0 0 1 10 10"/>
       </svg>`;
-    submitBtn.disabled = true;
 
-    setTimeout(() => {
-      submitBtn.innerHTML = `<span>✓ Message Sent!</span>`;
-      submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-      form.reset();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formspree.io/f/mjgploza', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        // Success
+        submitBtn.innerHTML = `<span>✓ Message Sent!</span>`;
+        submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+        form.reset();
+
+        setTimeout(() => {
+          submitBtn.innerHTML = `<span>Send Message</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>`;
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 3000);
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      // Error state
+      submitBtn.innerHTML = `<span>✗ Failed — Try Again</span>`;
+      submitBtn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+      submitBtn.disabled = false;
 
       setTimeout(() => {
         submitBtn.innerHTML = `<span>Send Message</span>
@@ -156,9 +185,8 @@ if (form) {
             <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
           </svg>`;
         submitBtn.style.background = '';
-        submitBtn.disabled = false;
       }, 3000);
-    }, 1500);
+    }
   });
 }
 
