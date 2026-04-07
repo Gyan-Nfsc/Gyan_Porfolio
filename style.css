@@ -538,7 +538,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 400px;
   gap: 60px;
-  align-items: center;
+  align-items: start;
 }
 
 /* ── Text column ── */
@@ -612,11 +612,12 @@ body {
   color: var(--white-40);
 }
 
-/* Credential chips row */
+/* Credential chips — now on right side below images */
 .about-chips-row {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }
 
 .info-chip {
