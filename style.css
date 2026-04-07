@@ -533,31 +533,51 @@ body {
    ============================ */
 .about { background: var(--navy-2); }
 
+/* ── ABOUT GRID: 2-col (text left | images right) ── */
 .about-grid {
   display: grid;
-  grid-template-columns: 340px 1fr 320px;
-  gap: 48px;
-  align-items: start;
+  grid-template-columns: 1fr 400px;
+  gap: 60px;
+  align-items: center;
 }
 
-.about-text { display: flex; flex-direction: column; gap: 20px; }
+/* ── Text column ── */
+.about-text-col {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.about-glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  padding: 40px 44px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 
 .about-lead {
   font-size: 1.08rem;
   color: var(--white-90);
-  line-height: 1.75;
+  line-height: 1.78;
+  font-weight: 500;
 }
 
-.about-text p {
+.about-glass-card p {
   color: var(--white-70);
-  line-height: 1.8;
+  line-height: 1.82;
   font-size: 0.95rem;
 }
 
+/* Highlights */
 .about-highlights {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   margin-top: 8px;
 }
 
@@ -565,20 +585,20 @@ body {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 16px 20px;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
+  padding: 13px 18px;
+  background: rgba(255, 107, 43, 0.06);
+  border: 1px solid rgba(255, 107, 43, 0.15);
   border-radius: var(--radius-sm);
   transition: var(--transition);
 }
 
 .highlight-item:hover {
-  background: var(--white-10);
-  transform: translateX(4px);
-  border-color: rgba(26,86,255,0.2);
+  background: rgba(255, 107, 43, 0.12);
+  transform: translateX(5px);
+  border-color: rgba(255, 107, 43, 0.35);
 }
 
-.highlight-icon { font-size: 1.4rem; }
+.highlight-icon { font-size: 1.35rem; flex-shrink: 0; }
 
 .highlight-item strong {
   display: block;
@@ -588,58 +608,22 @@ body {
 }
 
 .highlight-item span {
-  font-size: 0.78rem;
+  font-size: 0.77rem;
   color: var(--white-40);
 }
 
-.about-image-col {
+/* Credential chips row */
+.about-chips-row {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.about-photo-frame {
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;
-  border: 1px solid var(--glass-border);
-}
-
-.about-photo {
-  width: 100%;
-  height: 420px;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.about-photo-frame:hover .about-photo { transform: scale(1.04); }
-
-.about-photo-overlay {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(10,15,30,0.95) 0%, transparent 100%);
-  padding: 28px 20px 18px;
-}
-
-.about-photo-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--white-70);
-}
-
-.about-info-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .info-chip {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px 16px;
+  padding: 13px 18px;
   background: var(--glass);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-sm);
@@ -647,9 +631,58 @@ body {
 }
 
 .info-chip:hover { background: var(--white-10); transform: translateY(-2px); }
-.chip-icon { font-size: 1.3rem; flex-shrink: 0; }
+.chip-icon { font-size: 1.25rem; flex-shrink: 0; }
 .info-chip strong { display: block; font-size: 0.85rem; font-weight: 700; color: var(--white); }
-.info-chip span { font-size: 0.75rem; color: var(--white-40); }
+.info-chip span { font-size: 0.74rem; color: var(--white-40); }
+
+/* ── Images column ── */
+.about-images-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-img-wrap {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+              box-shadow 0.4s ease,
+              border-color 0.4s ease;
+  cursor: pointer;
+}
+
+.about-img-wrap:hover {
+  transform: translateY(-7px) scale(1.015);
+  box-shadow: 0 28px 64px rgba(255, 107, 43, 0.2), 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 107, 43, 0.35);
+}
+
+.about-img-wrap img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.about-img-wrap:hover img {
+  transform: scale(1.06);
+}
+
+.about-img-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 28px 18px 14px;
+  background: linear-gradient(to top, rgba(10, 15, 30, 0.92) 0%, transparent 100%);
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.79rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
 
 /* ============================
    EXPERIENCE
@@ -1539,7 +1572,9 @@ body {
   .hero-stats { justify-content: center; }
   .hero-image { padding-left: 0; padding-top: 40px; }
   .image-frame { width: 300px; height: 300px; }
-  .about-grid { grid-template-columns: 300px 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-images-col { flex-direction: row; }
+  .about-img-wrap img { height: 220px; }
   .achievements-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-grid { grid-template-columns: 1fr; }
   .education-grid { grid-template-columns: 1fr; }
@@ -1547,7 +1582,6 @@ body {
   .gallery-large { grid-row: span 1; }
   .gallery-wide { grid-column: span 2; }
   .exp-photo-row { grid-template-columns: 1fr; }
-  .about-image-col { order: -1; }
 }
 
 @media (max-width: 768px) {
@@ -1566,9 +1600,9 @@ body {
   .gallery-grid { grid-template-columns: 1fr; }
   .gallery-wide { grid-column: span 1; }
   .about-grid { grid-template-columns: 1fr; }
-  .about-info-cards { grid-template-columns: 1fr; }
-  /* Hide the right-side fire gear image on mobile for cleaner layout */
-  .about-grid > .about-image-col:last-child { display: none; }
+  .about-images-col { flex-direction: column; }
+  .about-glass-card { padding: 28px 24px; }
+  .about-chips-row { justify-content: flex-start; }
 }
 
 @media (max-width: 480px) {
