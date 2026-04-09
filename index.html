@@ -7,10 +7,42 @@
   <title>Gyan Ranjan | Aviation Safety Professional</title>
   <meta name="description"
     content="Portfolio of Gyan Ranjan — Senior Officer ARFF at Mumbai International Airport (CSMIA). Aviation safety expert, fire engineer, and Young Safety Professional 2025." />
+
+  <!-- ══ PWA: Web App Manifest ══ -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- ══ PWA: Theme & Status Bar ══ -->
+  <meta name="theme-color" content="#ff6b2b" />
+  <meta name="msapplication-TileColor" content="#0a0e1a" />
+  <meta name="msapplication-TileImage" content="icons/icon-144x144.png" />
+
+  <!-- ══ PWA: iOS / Safari ══ -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Gyan Ranjan" />
+  <link rel="apple-touch-icon" href="icons/icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-192x192.png" />
+
+  <!-- ══ PWA: Favicons ══ -->
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/icon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/icon-72x72.png" />
+
+  <!-- ══ Fonts ══ -->
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+
+  <!-- ══ PWA: Service Worker Registration ══ -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then(reg => console.log('[PWA] Service Worker registered:', reg.scope))
+          .catch(err => console.warn('[PWA] SW registration failed:', err));
+      });
+    }
+  </script>
 </head>
 
 <body>

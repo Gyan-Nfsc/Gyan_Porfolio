@@ -1,0 +1,43 @@
+{
+  "name": "Gyan Ranjan | Aviation Safety",
+  "short_name": "Gyan Ranjan",
+  "description": "Portfolio of Gyan Ranjan — Senior Officer ARFF at CSMIA Mumbai. Aviation safety expert, fire engineer, and Young Safety Professional 2025.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0e1a",
+  "theme_color": "#ff6b2b",
+  "lang": "en",
+  "categories": ["portfolio", "business", "productivity"],
+  "icons": [
+    { "src": "icons/icon-72x72.png",   "sizes": "72x72",   "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-96x96.png",   "sizes": "96x96",   "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-128x128.png", "sizes": "128x128", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-144x144.png", "sizes": "144x144", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-152x152.png", "sizes": "152x152", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-384x384.png", "sizes": "384x384", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "About",
+      "short_name": "About",
+      "url": "./#about",
+      "icons": [{ "src": "icons/icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Experience",
+      "short_name": "Experience",
+      "url": "./#experience",
+      "icons": [{ "src": "icons/icon-96x96.png", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "url": "./#contact",
+      "icons": [{ "src": "icons/icon-96x96.png", "sizes": "96x96" }]
+    }
+  ]
+}

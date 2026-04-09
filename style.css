@@ -254,7 +254,7 @@ body {
   letter-spacing: -0.03em;
 }
 
-.title-line { display: block; }
+.title-line { display: inline; }
 
 .hero-subtitle {
   font-size: clamp(1rem, 1.5vw, 1.15rem);
